@@ -71,8 +71,18 @@ impl Bind {
     /// Human readable shortcut, with variables resolved: `SUPER + SHIFT + Q`.
     pub fn shortcut(&self, vars: &[(String, String)]) -> String {
         let mut parts = normalized_mods(&self.mods, vars);
-        parts.push(self.key.to_uppercase());
+        parts.push(display_key(&self.key));
         parts.join(" + ")
+    }
+}
+
+/// `q` → `Q`, `left` → `Left`, `XF86AudioMute` stays as written.
+pub fn display_key(key: &str) -> String {
+    let mut chars = key.chars();
+    match chars.next() {
+        Some(c) if key.chars().count() == 1 => c.to_uppercase().to_string(),
+        Some(c) => c.to_uppercase().chain(chars).collect(),
+        None => String::new(),
     }
 }
 
@@ -221,6 +231,14 @@ mod tests {
         assert_eq!(b.shortcut(&vars()), "SUPER + SHIFT + Q");
         let alt = Bind::parse("bind", "$mod2, a, killactive").unwrap();
         assert_eq!(alt.shortcut(&vars()), "ALT + A");
+    }
+
+    #[test]
+    fn key_display() {
+        assert_eq!(display_key("q"), "Q");
+        assert_eq!(display_key("left"), "Left");
+        assert_eq!(display_key("XF86AudioMute"), "XF86AudioMute");
+        assert_eq!(display_key("mouse:272"), "Mouse:272");
     }
 
     #[test]
