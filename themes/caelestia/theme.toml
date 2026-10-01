@@ -1,0 +1,65 @@
+[theme]
+id = "caelestia"
+name = "Caelestia"
+author = "HyprGUI contributors"
+description = "Material 3 look in the spirit of the Caelestia shell: soft purple palette, large rounded shapes, Google Sans Flex."
+base = "dark"
+
+# Palette = Material 3 baseline (purple). Not yet cross-checked against the
+# Caelestia shell's own scheme files; refine when the exact tokens are verified.
+# To follow the shell's wallpaper-driven scheme, point `source` at a flat JSON
+# file of token -> hex pairs (format to be confirmed) and uncomment:
+# [dynamic]
+# source = "~/.local/state/caelestia/scheme.json"
+
+[fonts]
+ui = "Google Sans Flex"
+mono = "Cascadia Code NF"
+icons = "Material Symbols Rounded"
+
+[shape]
+radius_small = 10
+radius_medium = 18
+radius_large = 28
+
+[colors.dark]
+primary = "#d0bcff"
+on_primary = "#381e72"
+primary_container = "#4f378b"
+on_primary_container = "#eaddff"
+secondary = "#ccc2dc"
+on_secondary = "#332d41"
+tertiary = "#efb8c8"
+error = "#f2b8b5"
+on_error = "#601410"
+background = "#141218"
+on_background = "#e6e0e9"
+surface = "#141218"
+on_surface = "#e6e0e9"
+on_surface_variant = "#cac4d0"
+surface_container_low = "#1d1b20"
+surface_container = "#211f26"
+surface_container_high = "#2b2930"
+outline = "#938f99"
+outline_variant = "#49454f"
+
+[colors.light]
+primary = "#6750a4"
+on_primary = "#ffffff"
+primary_container = "#eaddff"
+on_primary_container = "#21005d"
+secondary = "#625b71"
+on_secondary = "#ffffff"
+tertiary = "#7d5260"
+error = "#b3261e"
+on_error = "#ffffff"
+background = "#fef7ff"
+on_background = "#1d1b20"
+surface = "#fef7ff"
+on_surface = "#1d1b20"
+on_surface_variant = "#49454f"
+surface_container_low = "#f7f2fa"
+surface_container = "#f3edf7"
+surface_container_high = "#ece6f0"
+outline = "#79747e"
+outline_variant = "#cac4d0"

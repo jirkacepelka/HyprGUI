@@ -1,0 +1,53 @@
+[theme]
+id = "default"
+name = "HyprGUI Default"
+author = "HyprGUI contributors"
+description = "Neutral blue Material 3 palette on top of libadwaita."
+base = "dark"
+
+[shape]
+radius_small = 6
+radius_medium = 12
+radius_large = 20
+
+[colors.dark]
+primary = "#a8c8ff"
+on_primary = "#00315e"
+primary_container = "#00487f"
+on_primary_container = "#d3e3ff"
+secondary = "#bcc7db"
+on_secondary = "#263141"
+tertiary = "#dbbce1"
+error = "#ffb4ab"
+on_error = "#690005"
+background = "#101418"
+on_background = "#e0e2e8"
+surface = "#101418"
+on_surface = "#e0e2e8"
+on_surface_variant = "#c3c7cf"
+surface_container_low = "#181c20"
+surface_container = "#1c2024"
+surface_container_high = "#272a2f"
+outline = "#8d9199"
+outline_variant = "#43474e"
+
+[colors.light]
+primary = "#1a60a5"
+on_primary = "#ffffff"
+primary_container = "#d3e3ff"
+on_primary_container = "#001c3a"
+secondary = "#535f70"
+on_secondary = "#ffffff"
+tertiary = "#6e5676"
+error = "#ba1a1a"
+on_error = "#ffffff"
+background = "#f8f9ff"
+on_background = "#191c20"
+surface = "#f8f9ff"
+on_surface = "#191c20"
+on_surface_variant = "#43474e"
+surface_container_low = "#f2f3fa"
+surface_container = "#eceef4"
+surface_container_high = "#e6e8ee"
+outline = "#73777f"
+outline_variant = "#c3c7cf"

@@ -1,0 +1,10 @@
+/* Caelestia: pill-shaped navigation, tonal surfaces, fluid rounding. */
+window.hyprgui { background: @m3_background; }
+window.hyprgui .navigation-sidebar row { border-radius: 999px; margin: 2px 12px; padding: 4px 8px; }
+window.hyprgui .navigation-sidebar row:selected { background: @m3_primary_container; color: @m3_on_primary_container; }
+window.hyprgui .card, window.hyprgui .boxed-list { background: @m3_surface_container; border: none; box-shadow: none; }
+window.hyprgui button.suggested-action { border-radius: 999px; padding: 6px 20px; }
+window.hyprgui switch:checked { background: @m3_primary; }
+window.hyprgui switch:checked slider { background: @m3_on_primary; }
+window.hyprgui .hero { background: @m3_primary_container; color: @m3_on_primary_container; padding: 28px; }
+window.hyprgui .symbol { font-family: "Material Symbols Rounded"; }
