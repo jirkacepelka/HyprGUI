@@ -1,0 +1,12 @@
+[package]
+name = "hyprgui-core"
+description = "GUI-independent logic: edit session, live preview, monitor and bind models"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+hyprconf = { path = "../hyprconf" }
+hyprschema = { path = "../hyprschema" }
+hypripc = { path = "../hypripc" }
+thiserror.workspace = true

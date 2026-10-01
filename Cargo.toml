@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/hyprconf", "crates/hyprgui-theme"]
+members = ["crates/hyprconf", "crates/hyprgui-theme", "crates/hypripc", "crates/hyprschema", "crates/hyprgui-core", "crates/hyprgui"]
 
 [workspace.package]
 version = "0.1.0"
@@ -12,3 +12,4 @@ repository = "https://github.com/jirkacepelka/HyprGUI"
 serde = { version = "1", features = ["derive"] }
 toml = "0.8"
 thiserror = "1"
+serde_json = "1"

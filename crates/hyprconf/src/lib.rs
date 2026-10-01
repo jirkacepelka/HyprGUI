@@ -254,6 +254,61 @@ impl Config {
         }
     }
 
+    /// Replaces the `n`-th assignment of `path` (file order). Keeps comments.
+    pub fn replace_nth(&mut self, path: &str, n: usize, value: &str) -> bool {
+        let Some(idx) = self.nth_index(path, n) else {
+            return false;
+        };
+        if let Line::Assign { value: v, raw, .. } = &mut self.lines[idx] {
+            if v != value {
+                *v = value.to_string();
+                *raw = None;
+            }
+        }
+        true
+    }
+
+    /// Removes the `n`-th assignment of `path`.
+    pub fn remove_nth(&mut self, path: &str, n: usize) -> bool {
+        let Some(idx) = self.nth_index(path, n) else {
+            return false;
+        };
+        self.lines.remove(idx);
+        true
+    }
+
+    /// Appends a new assignment of a repeatable keyword right after the last
+    /// existing one, or at the end of the matching section/file.
+    pub fn push(&mut self, path: &str, value: &str) {
+        let parts: Vec<&str> = path.split(':').collect();
+        let (key, sections) = parts.split_last().expect("path is never empty");
+        if let Some(last) = self.find_assign(sections, key).last().copied() {
+            let indent = match &self.lines[last] {
+                Line::Assign { indent, .. } => indent.clone(),
+                _ => String::new(),
+            };
+            self.lines.insert(
+                last + 1,
+                Line::Assign {
+                    indent,
+                    key: (*key).to_string(),
+                    value: value.to_string(),
+                    trailing: String::new(),
+                    raw: None,
+                },
+            );
+            self.trailing_newline = true;
+        } else {
+            self.insert_new(sections, key, value);
+        }
+    }
+
+    fn nth_index(&self, path: &str, n: usize) -> Option<usize> {
+        let parts: Vec<&str> = path.split(':').collect();
+        let (key, sections) = parts.split_last()?;
+        self.find_assign(sections, key).get(n).copied()
+    }
+
     /// Indices of assignments `key` located exactly in `sections`.
     fn find_assign(&self, sections: &[&str], key: &str) -> Vec<usize> {
         let mut stack: Vec<&str> = Vec::new();
@@ -371,6 +426,9 @@ impl fmt::Display for Config {
         Ok(())
     }
 }
+
+mod set;
+pub use set::{ConfigSet, Located, Saved};
 
 #[cfg(test)]
 mod tests {
@@ -504,6 +562,25 @@ bind = $mod, T, exec, kitty
         let mut c = Config::parse(SAMPLE).unwrap();
         c.set_all("bind", &["$mod, E, exec, thunar".into()]);
         assert_eq!(c.get_all("bind"), vec!["$mod, E, exec, thunar"]);
+    }
+
+    #[test]
+    fn nth_helpers_edit_lists() {
+        let mut c = Config::parse(SAMPLE).unwrap();
+        assert!(c.replace_nth("bind", 1, "$mod, B, exec, firefox"));
+        assert!(c.remove_nth("bind", 0));
+        c.push("bind", "$mod, X, exit");
+        assert_eq!(
+            c.get_all("bind"),
+            vec!["$mod, B, exec, firefox", "$mod, X, exit"]
+        );
+        assert!(!c.replace_nth("bind", 9, "x"));
+        // pushing a new keyword lands at the end and re-parses cleanly
+        c.push("exec-once", "waybar");
+        assert_eq!(
+            Config::parse(&c.to_string()).unwrap().get_all("exec-once"),
+            vec!["waybar"]
+        );
     }
 
     #[test]
