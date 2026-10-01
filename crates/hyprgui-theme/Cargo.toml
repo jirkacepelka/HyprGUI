@@ -1,0 +1,11 @@
+[package]
+name = "hyprgui-theme"
+description = "Theme loading, validation and GTK CSS generation for HyprGUI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+toml.workspace = true
+thiserror.workspace = true

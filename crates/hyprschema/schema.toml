@@ -1,0 +1,485 @@
+[[page]]
+id = "appearance"
+icon = "preferences-desktop-appearance-symbolic"
+title = { en = "Appearance", cs = "Vzhled" }
+
+[[page]]
+id = "input"
+icon = "input-keyboard-symbolic"
+title = { en = "Input", cs = "Vstup" }
+
+[[group]]
+id = "gaps"
+page = "appearance"
+title = { en = "Gaps and borders", cs = "Mezery a okraje" }
+
+[[group]]
+id = "rounding"
+page = "appearance"
+title = { en = "Windows", cs = "Okna" }
+
+[[group]]
+id = "blur"
+page = "appearance"
+title = { en = "Blur", cs = "Rozmazání" }
+
+[[group]]
+id = "shadow"
+page = "appearance"
+title = { en = "Shadow", cs = "Stín" }
+
+[[group]]
+id = "animations"
+page = "appearance"
+title = { en = "Animations", cs = "Animace" }
+
+[[group]]
+id = "keyboard"
+page = "input"
+title = { en = "Keyboard", cs = "Klávesnice" }
+
+[[group]]
+id = "mouse"
+page = "input"
+title = { en = "Mouse", cs = "Myš" }
+
+[[group]]
+id = "touchpad"
+page = "input"
+title = { en = "Touchpad", cs = "Touchpad" }
+
+[[group]]
+id = "gestures"
+page = "input"
+title = { en = "Gestures", cs = "Gesta" }
+
+[[option]]
+key = "general:gaps_in"
+page = "appearance"
+group = "gaps"
+kind = "int"
+default = "5"
+label = { en = "Inner gap", cs = "Vnitřní mezera" }
+desc = { en = "Space between windows, in pixels.", cs = "Mezera mezi okny v pixelech." }
+min = 0
+max = 200
+
+[[option]]
+key = "general:gaps_out"
+page = "appearance"
+group = "gaps"
+kind = "int"
+default = "20"
+label = { en = "Outer gap", cs = "Vnější mezera" }
+desc = { en = "Space between windows and screen edges.", cs = "Mezera mezi okny a okrajem obrazovky." }
+min = 0
+max = 200
+
+[[option]]
+key = "general:border_size"
+page = "appearance"
+group = "gaps"
+kind = "int"
+default = "1"
+label = { en = "Border width", cs = "Šířka okraje" }
+min = 0
+max = 20
+
+[[option]]
+key = "general:col.active_border"
+page = "appearance"
+group = "gaps"
+kind = "gradient"
+default = "rgba(33ccffee) rgba(00ff99ee) 45deg"
+label = { en = "Active border", cs = "Okraj aktivního okna" }
+desc = { en = "One or more colours and an angle.", cs = "Jedna nebo více barev a úhel." }
+
+[[option]]
+key = "general:col.inactive_border"
+page = "appearance"
+group = "gaps"
+kind = "gradient"
+default = "rgba(595959aa)"
+label = { en = "Inactive border", cs = "Okraj neaktivního okna" }
+
+[[option]]
+key = "general:resize_on_border"
+page = "appearance"
+group = "gaps"
+kind = "bool"
+default = "false"
+label = { en = "Resize on border", cs = "Změna velikosti za okraj" }
+desc = { en = "Drag the window border to resize.", cs = "Okno lze zvětšit tažením za okraj." }
+
+[[option]]
+key = "general:layout"
+page = "appearance"
+group = "gaps"
+kind = "choice"
+default = "dwindle"
+label = { en = "Layout", cs = "Rozložení" }
+choices = ["dwindle", "master"]
+
+[[option]]
+key = "decoration:rounding"
+page = "appearance"
+group = "rounding"
+kind = "int"
+default = "0"
+label = { en = "Corner radius", cs = "Zaoblení rohů" }
+min = 0
+max = 60
+
+[[option]]
+key = "decoration:active_opacity"
+page = "appearance"
+group = "rounding"
+kind = "float"
+default = "1.0"
+label = { en = "Active window opacity", cs = "Průhlednost aktivního okna" }
+min = 0.1
+max = 1.0
+step = 0.05
+
+[[option]]
+key = "decoration:inactive_opacity"
+page = "appearance"
+group = "rounding"
+kind = "float"
+default = "1.0"
+label = { en = "Inactive window opacity", cs = "Průhlednost neaktivního okna" }
+min = 0.1
+max = 1.0
+step = 0.05
+
+[[option]]
+key = "decoration:dim_inactive"
+page = "appearance"
+group = "rounding"
+kind = "bool"
+default = "false"
+label = { en = "Dim inactive windows", cs = "Ztlumit neaktivní okna" }
+
+[[option]]
+key = "decoration:dim_strength"
+page = "appearance"
+group = "rounding"
+kind = "float"
+default = "0.5"
+label = { en = "Dim strength", cs = "Síla ztlumení" }
+min = 0.0
+max = 1.0
+step = 0.05
+depends = "decoration:dim_inactive"
+
+[[option]]
+key = "decoration:blur:enabled"
+page = "appearance"
+group = "blur"
+kind = "bool"
+default = "true"
+label = { en = "Enable blur", cs = "Zapnout rozmazání" }
+
+[[option]]
+key = "decoration:blur:size"
+page = "appearance"
+group = "blur"
+kind = "int"
+default = "8"
+label = { en = "Blur size", cs = "Velikost rozmazání" }
+min = 1
+max = 50
+depends = "decoration:blur:enabled"
+
+[[option]]
+key = "decoration:blur:passes"
+page = "appearance"
+group = "blur"
+kind = "int"
+default = "1"
+label = { en = "Blur passes", cs = "Počet průchodů" }
+desc = { en = "More passes look smoother but cost performance.", cs = "Více průchodů je hladší, ale náročnější." }
+min = 1
+max = 10
+depends = "decoration:blur:enabled"
+
+[[option]]
+key = "decoration:blur:noise"
+page = "appearance"
+group = "blur"
+kind = "float"
+default = "0.0117"
+label = { en = "Noise", cs = "Šum" }
+min = 0.0
+max = 1.0
+step = 0.005
+depends = "decoration:blur:enabled"
+
+[[option]]
+key = "decoration:blur:brightness"
+page = "appearance"
+group = "blur"
+kind = "float"
+default = "0.8172"
+label = { en = "Brightness", cs = "Jas" }
+min = 0.0
+max = 2.0
+step = 0.05
+depends = "decoration:blur:enabled"
+
+[[option]]
+key = "decoration:blur:vibrancy"
+page = "appearance"
+group = "blur"
+kind = "float"
+default = "0.1696"
+label = { en = "Vibrancy", cs = "Sytost" }
+min = 0.0
+max = 1.0
+step = 0.05
+depends = "decoration:blur:enabled"
+
+[[option]]
+key = "decoration:shadow:enabled"
+page = "appearance"
+group = "shadow"
+kind = "bool"
+default = "true"
+label = { en = "Enable shadows", cs = "Zapnout stíny" }
+
+[[option]]
+key = "decoration:shadow:range"
+page = "appearance"
+group = "shadow"
+kind = "int"
+default = "4"
+label = { en = "Shadow range", cs = "Dosah stínu" }
+min = 0
+max = 100
+depends = "decoration:shadow:enabled"
+
+[[option]]
+key = "decoration:shadow:render_power"
+page = "appearance"
+group = "shadow"
+kind = "int"
+default = "3"
+label = { en = "Shadow falloff", cs = "Útlum stínu" }
+min = 1
+max = 4
+depends = "decoration:shadow:enabled"
+
+[[option]]
+key = "decoration:shadow:color"
+page = "appearance"
+group = "shadow"
+kind = "color"
+default = "rgba(1a1a1aee)"
+label = { en = "Shadow colour", cs = "Barva stínu" }
+depends = "decoration:shadow:enabled"
+
+[[option]]
+key = "animations:enabled"
+page = "appearance"
+group = "animations"
+kind = "bool"
+default = "true"
+label = { en = "Enable animations", cs = "Zapnout animace" }
+desc = { en = "Curves and per-animation rules are on the Animations page.", cs = "Křivky a pravidla jednotlivých animací jsou na stránce Animace." }
+
+[[option]]
+key = "misc:vfr"
+page = "appearance"
+group = "animations"
+kind = "bool"
+default = "true"
+label = { en = "Variable frame rate", cs = "Proměnná snímková frekvence" }
+desc = { en = "Saves power by redrawing only when needed.", cs = "Šetří energii, překresluje jen když je potřeba." }
+
+[[option]]
+key = "input:kb_layout"
+page = "input"
+group = "keyboard"
+kind = "text"
+default = "us"
+label = { en = "Layouts", cs = "Rozložení" }
+desc = { en = "Comma separated, e.g. us,cz", cs = "Oddělené čárkou, např. us,cz" }
+
+[[option]]
+key = "input:kb_variant"
+page = "input"
+group = "keyboard"
+kind = "text"
+default = ""
+label = { en = "Variants", cs = "Varianty" }
+desc = { en = "Comma separated, e.g. ,qwerty", cs = "Oddělené čárkou, např. ,qwerty" }
+
+[[option]]
+key = "input:kb_options"
+page = "input"
+group = "keyboard"
+kind = "text"
+default = ""
+label = { en = "Options", cs = "Volby" }
+desc = { en = "e.g. grp:alt_shift_toggle", cs = "např. grp:alt_shift_toggle" }
+
+[[option]]
+key = "input:repeat_rate"
+page = "input"
+group = "keyboard"
+kind = "int"
+default = "25"
+label = { en = "Repeat rate", cs = "Rychlost opakování" }
+desc = { en = "Repeats per second.", cs = "Opakování za sekundu." }
+min = 1
+max = 200
+
+[[option]]
+key = "input:repeat_delay"
+page = "input"
+group = "keyboard"
+kind = "int"
+default = "600"
+label = { en = "Repeat delay", cs = "Prodleva opakování" }
+desc = { en = "Milliseconds before repeating starts.", cs = "Milisekundy do začátku opakování." }
+min = 50
+max = 2000
+
+[[option]]
+key = "input:numlock_by_default"
+page = "input"
+group = "keyboard"
+kind = "bool"
+default = "false"
+label = { en = "NumLock on start", cs = "NumLock po startu" }
+
+[[option]]
+key = "input:follow_mouse"
+page = "input"
+group = "mouse"
+kind = "choice"
+default = "1"
+label = { en = "Focus follows mouse", cs = "Fokus následuje myš" }
+desc = { en = "0 off, 1 follow, 2 click to change, 3 loose.", cs = "0 vypnuto, 1 následuje, 2 po kliknutí, 3 volné." }
+choices = ["0", "1", "2", "3"]
+
+[[option]]
+key = "input:sensitivity"
+page = "input"
+group = "mouse"
+kind = "float"
+default = "0.0"
+label = { en = "Sensitivity", cs = "Citlivost" }
+desc = { en = "From -1.0 (slow) to 1.0 (fast).", cs = "Od -1.0 (pomalé) do 1.0 (rychlé)." }
+min = -1.0
+max = 1.0
+step = 0.05
+
+[[option]]
+key = "input:accel_profile"
+page = "input"
+group = "mouse"
+kind = "choice"
+default = "adaptive"
+label = { en = "Acceleration profile", cs = "Profil akcelerace" }
+choices = ["adaptive", "flat"]
+
+[[option]]
+key = "input:left_handed"
+page = "input"
+group = "mouse"
+kind = "bool"
+default = "false"
+label = { en = "Left handed", cs = "Pro leváky" }
+
+[[option]]
+key = "input:natural_scroll"
+page = "input"
+group = "mouse"
+kind = "bool"
+default = "false"
+label = { en = "Natural scrolling", cs = "Přirozené rolování" }
+
+[[option]]
+key = "input:touchpad:natural_scroll"
+page = "input"
+group = "touchpad"
+kind = "bool"
+default = "false"
+label = { en = "Natural scrolling", cs = "Přirozené rolování" }
+
+[[option]]
+key = "input:touchpad:tap-to-click"
+page = "input"
+group = "touchpad"
+kind = "bool"
+default = "true"
+label = { en = "Tap to click", cs = "Klepnutí jako kliknutí" }
+
+[[option]]
+key = "input:touchpad:disable_while_typing"
+page = "input"
+group = "touchpad"
+kind = "bool"
+default = "true"
+label = { en = "Disable while typing", cs = "Vypnout při psaní" }
+
+[[option]]
+key = "input:touchpad:clickfinger_behavior"
+page = "input"
+group = "touchpad"
+kind = "bool"
+default = "false"
+label = { en = "Clickfinger behaviour", cs = "Kliknutí podle počtu prstů" }
+desc = { en = "Two fingers right click, three middle click.", cs = "Dva prsty pravé tlačítko, tři prostřední." }
+
+[[option]]
+key = "input:touchpad:scroll_factor"
+page = "input"
+group = "touchpad"
+kind = "float"
+default = "1.0"
+label = { en = "Scroll speed", cs = "Rychlost rolování" }
+min = 0.1
+max = 5.0
+step = 0.1
+
+[[option]]
+key = "gestures:workspace_swipe"
+page = "input"
+group = "gestures"
+kind = "bool"
+default = "false"
+label = { en = "Workspace swipe", cs = "Přepínání ploch gestem" }
+desc = { en = "Hyprland before 0.51. Newer versions use `gesture =` rules.", cs = "Hyprland před 0.51. Novější verze používají pravidla `gesture =`." }
+
+[[option]]
+key = "gestures:workspace_swipe_fingers"
+page = "input"
+group = "gestures"
+kind = "int"
+default = "3"
+label = { en = "Swipe fingers", cs = "Počet prstů" }
+min = 2
+max = 5
+depends = "gestures:workspace_swipe"
+
+[[option]]
+key = "gestures:workspace_swipe_distance"
+page = "input"
+group = "gestures"
+kind = "int"
+default = "300"
+label = { en = "Swipe distance", cs = "Vzdálenost tahu" }
+min = 50
+max = 1000
+depends = "gestures:workspace_swipe"
+
+[[option]]
+key = "gestures:workspace_swipe_invert"
+page = "input"
+group = "gestures"
+kind = "bool"
+default = "true"
+label = { en = "Invert direction", cs = "Obrátit směr" }
+depends = "gestures:workspace_swipe"

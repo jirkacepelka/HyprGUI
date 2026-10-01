@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=HyprGUI
+GenericName=Hyprland Settings
+Comment=Configure Hyprland
+Comment[cs]=Nastavení Hyprlandu
+Exec=hyprgui
+Icon=io.github.jirkacepelka.HyprGUI
+Terminal=false
+Categories=Settings;DesktopSettings;GTK;
+Keywords=hyprland;wayland;settings;config;
+StartupNotify=true

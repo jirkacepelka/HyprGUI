@@ -1,0 +1,43 @@
+# Maintainer: HyprGUI contributors
+pkgname=hyprgui-git
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='GUI for configuring Hyprland (GTK4/libadwaita), with themes'
+arch=('x86_64' 'aarch64')
+url='https://github.com/jirkacepelka/HyprGUI'
+license=('GPL-3.0-or-later')
+depends=('gtk4' 'libadwaita')
+makedepends=('cargo' 'git')
+optdepends=('hyprland: live preview of changes')
+provides=('hyprgui')
+conflicts=('hyprgui')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd HyprGUI
+  printf '0.1.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd HyprGUI
+  cargo build --release --locked -p hyprgui
+}
+
+check() {
+  cd HyprGUI
+  cargo test --release --locked --workspace
+}
+
+package() {
+  cd HyprGUI
+  install -Dm755 target/release/hyprgui "$pkgdir/usr/bin/hyprgui"
+  install -Dm644 data/io.github.jirkacepelka.HyprGUI.desktop "$pkgdir/usr/share/applications/io.github.jirkacepelka.HyprGUI.desktop"
+  install -Dm644 data/io.github.jirkacepelka.HyprGUI.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.jirkacepelka.HyprGUI.svg"
+  for t in themes/*/; do
+    id=$(basename "$t")
+    install -d "$pkgdir/usr/share/hyprgui/themes/$id"
+    cp -r "$t". "$pkgdir/usr/share/hyprgui/themes/$id/"
+  done
+  install -Dm644 docs/THEMING.md "$pkgdir/usr/share/doc/hyprgui/THEMING.md"
+}

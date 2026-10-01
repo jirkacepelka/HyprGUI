@@ -1,0 +1,10 @@
+[package]
+name = "hyprschema"
+description = "Declarative schema of Hyprland options used to generate settings pages"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+toml.workspace = true

@@ -1,0 +1,3 @@
+/* Default theme: relies on the generated colours, adds only shared widget polish. */
+window.hyprgui .nav-sidebar row { margin: 2px 8px; }
+window.hyprgui .hero { background: @m3_primary_container; color: @m3_on_primary_container; padding: 24px; }
