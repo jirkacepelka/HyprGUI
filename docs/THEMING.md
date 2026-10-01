@@ -73,11 +73,24 @@ Plain GTK4 CSS. The window has the class `hyprgui`; the hero banner uses
 ## Checking a theme
 
 ```
-cargo run -p hyprgui -- theme check path/to/theme    # planned CLI
+hyprgui theme check path/to/theme
+hyprgui theme list
 ```
 Checks: valid ids and colours, missing tokens, and WCAG contrast (4.5:1) of
-text/background pairs. The `hyprgui-theme` crate's `Theme::validate` does the
-same today.
+text/background pairs. Exit code 1 if there are errors (warnings pass), so it
+works in CI.
+
+## Choosing and shipping a theme
+
+- Users pick a theme under **Application** in the app, or with `--theme ID`
+  / `HYPRGUI_THEME`. The choice is saved in `~/.config/hyprgui/settings.toml`.
+- Distros set the default for everyone with `/etc/hyprgui/settings.toml`:
+  ```toml
+  theme = "my-shell"
+  scheme = "system"      # system | light | dark
+  ```
+- While a theme is selected its files are watched: save `theme.toml`,
+  `style.css` or the dynamic source and the open window restyles within a second.
 
 ## Shipped themes
 
