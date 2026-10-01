@@ -23,6 +23,7 @@ struct Inner {
 
 /// Directories searched for themes. Dev builds also look in the source tree.
 pub fn search_paths() -> Vec<PathBuf> {
+    #[allow(unused_mut)]
     let mut v = hyprgui_theme::search_paths();
     #[cfg(debug_assertions)]
     v.push(PathBuf::from(concat!(
